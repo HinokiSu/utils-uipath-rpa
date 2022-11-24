@@ -3,7 +3,7 @@
     <x:Property Name="all_globalState" Type="InOutArgument(x:Boolean)" />
     <x:Property Name="out_globalConfig" Type="OutArgument(scg:Dictionary(x:String, x:String))" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>908,3487.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>803.2,1298.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -39,7 +39,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="55">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="110">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -94,9 +94,10 @@
       <AssemblyReference>System.Data.Common</AssemblyReference>
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="读取&amp;处理配置文件" sap:VirtualizedContainerService.HintSize="647.2,3422.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="读取&amp;处理配置文件" sap:VirtualizedContainerService.HintSize="499.20000000000005,1860" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="configFolderPath" />
       <Variable x:TypeArguments="x:String" Name="configFilePath" />
@@ -110,10 +111,11 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="配置文件基本信息" sap:VirtualizedContainerService.HintSize="584.8,412" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="配置文件基本信息" sap:VirtualizedContainerService.HintSize="436.8,412" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <Assign DisplayName="TODO: 配置文件所在路径" sap:VirtualizedContainerService.HintSize="337.6,69.6" sap2010:WorkflowViewState.IdRef="Assign_1">
@@ -121,7 +123,7 @@
           <OutArgument x:TypeArguments="x:String">[configFolderPath]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="x:String">E:\work_space\RPA\wk_space\松下\项目开发\订单发货推进_RPA\</InArgument>
+          <InArgument x:TypeArguments="x:String">.\</InArgument>
         </Assign.Value>
       </Assign>
       <Assign DisplayName="TODO: 配置文件完整名称" sap:VirtualizedContainerService.HintSize="337.6,69.6" sap2010:WorkflowViewState.IdRef="Assign_2">
@@ -141,7 +143,7 @@
         </Assign.Value>
       </Assign>
     </Sequence>
-    <Assign DisplayName="初始化config字典" sap:VirtualizedContainerService.HintSize="584.8,69.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign DisplayName="初始化config字典" sap:VirtualizedContainerService.HintSize="436.8,69.6" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[configDict]</OutArgument>
       </Assign.To>
@@ -149,7 +151,13 @@
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[New Dictionary(of String, String)]</InArgument>
       </Assign.Value>
     </Assign>
-    <TryCatch DisplayName="Try Catch -- 读取config表" sap:VirtualizedContainerService.HintSize="584.8,369.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch -- 读取config表" sap:VirtualizedContainerService.HintSize="436.8,369.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
         <ui:ReadRange AddHeaders="True" sap2010:Annotation.AnnotationText="读取config表" DataTable="[configDT]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="333.6,128.8" sap2010:WorkflowViewState.IdRef="ReadRange_3" SheetName="[configInSheet]" WorkbookPath="[configFolderPath+configFilePath]">
           <ui:ReadRange.Range>
@@ -176,7 +184,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence sap:VirtualizedContainerService.HintSize="400,349.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <Sequence sap:VirtualizedContainerService.HintSize="400,351.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -196,7 +204,7 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <Assign sap2010:Annotation.AnnotationText="记录value为空，所对应的key" DisplayName="初始化 value值为空的key记录" sap:VirtualizedContainerService.HintSize="584.8,100.8" sap2010:WorkflowViewState.IdRef="Assign_6">
+    <Assign sap2010:Annotation.AnnotationText="记录value为空，所对应的key" DisplayName="初始化 value值为空的key记录" sap:VirtualizedContainerService.HintSize="436.8,100.8" sap2010:WorkflowViewState.IdRef="Assign_6">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[emptyValueStr]</OutArgument>
       </Assign.To>
@@ -211,19 +219,25 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[configDT]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="584.8,1358.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[configDT]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="436.8,62.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="551.2,1232.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,185.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[Not String.IsNullOrEmpty(row(&quot;KEY&quot;).ToString.Trim)]" DisplayName="If -- 判断config中是否存在 空KEY" sap:VirtualizedContainerService.HintSize="488.8,1109.6" sap2010:WorkflowViewState.IdRef="If_4">
+            <If Condition="[Not String.IsNullOrEmpty(row(&quot;KEY&quot;).ToString.Trim)]" DisplayName="If -- 判断config中是否存在 空KEY" sap:VirtualizedContainerService.HintSize="337.6,62.4" sap2010:WorkflowViewState.IdRef="If_4">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
               <If.Then>
                 <Sequence DisplayName="不存在" sap:VirtualizedContainerService.HintSize="407.2,520.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
                   <sap:WorkflowViewStateService.ViewState>
@@ -292,16 +306,16 @@
       </ui:ForEachRow.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
-    <If sap2010:Annotation.AnnotationText="若不为空，则说明，VALUE存在空值的情况，异常。" Condition="[Not String.IsNullOrEmpty(emptyValueStr)]" DisplayName="If--判断空配置字段字符串是否为不为空" sap:VirtualizedContainerService.HintSize="584.8,788.8" sap2010:WorkflowViewState.IdRef="If_8">
+    <If sap2010:Annotation.AnnotationText="若不为空，则说明，VALUE存在空值的情况，异常。" Condition="[Not String.IsNullOrEmpty(emptyValueStr)]" DisplayName="If--判断空配置字段字符串是否为不为空" sap:VirtualizedContainerService.HintSize="436.8,106.4" sap2010:WorkflowViewState.IdRef="If_8">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -347,5 +361,22 @@
         </Assign>
       </If.Else>
     </If>
+    <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:String)" CurrentIndex="{x:Null}" DisplayName="[测试] 输出configDict" sap:VirtualizedContainerService.HintSize="435.2,376" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[configDict]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, x:String)">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, x:String)" Name="item" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,241.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="337.6,118.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Key: &quot; + item.Key + &quot;   &quot; + &quot;Val: &quot; + item.Value]" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
   </Sequence>
 </Activity>
